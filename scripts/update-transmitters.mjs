@@ -92,7 +92,7 @@ for (const product of products) {
   await writeFile(join(directory, "index.html"), detailPage(product), "utf8");
 }
 
-for (const obsolete of ["automatic-control-unit", "transmitter-tripod-setup", "receiver-mounting-system", "complete-levelling-system"]) {
+for (const obsolete of ["automatic-control-unit", "transmitter-tripod-setup", "receiver-mounting-system", "complete-levelling-system", "digital-laser-transmitter"]) {
   await rm(join(root, "dist", "transmitters", obsolete), { recursive: true, force: true });
 }
 

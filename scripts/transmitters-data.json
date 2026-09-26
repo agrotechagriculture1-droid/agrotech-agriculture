@@ -1,9 +1,416 @@
 [
-{"slug":"alpha-proshot-transmitter","title":"Alpha ProShot Transmitter","category":"Precision rotary laser","tagline":"A self-levelling rotary laser reference for precise agricultural grading.","cardDescription":"Creates a stable rotary laser reference for accurate field grading and land-levelling work.","description":"The Alpha ProShot Transmitter establishes the working reference plane for a laser land-levelling system. Its accessible front controls support practical field setup, slope adjustment and rotation selection.","image":"/assets/agrotech-alpha-proshot-transmitter-1.png","images":[["/assets/agrotech-alpha-proshot-transmitter-1.png","Front view of the Alpha ProShot Transmitter"],["/assets/agrotech-alpha-proshot-transmitter-2.png","Alpha ProShot Transmitter on its field-ready base"],["/assets/agrotech-alpha-proshot-transmitter-3.png","Angled view of the Alpha ProShot Transmitter"]],"features":["Self-levelling rotary laser reference","X-axis and Y-axis slope controls","Selectable rotation settings","Clear front control panel","Protected field-ready housing","Works with compatible laser receivers"],"applications":["Agricultural land levelling","Field-grade reference","Irrigation-oriented field preparation","Receiver-guided machine control"],"specs":[["Product type","Self-levelling rotary laser transmitter"],["Reference output","Rotating laser plane"],["Slope control","X-axis and Y-axis adjustment"],["Controls","Front-mounted keypad"],["Field setup","Tripod-mounted reference position"],["System pairing","Compatible laser receiver and control system"],["Exact model data","Confirmed by the Agrotech team before ordering"]]},
-{"slug":"fukuda-fre-102b","title":"Fukuda FRE-102B","category":"Heavy-duty rotary laser","tagline":"A long-range rotary laser level transmitter designed for agricultural land levelling.","cardDescription":"A heavy-duty agricultural rotary laser reference for accurate long-range land-levelling work.","description":"The Fukuda FRE-102B creates a 360-degree reference for field grading. Fukuda specifies horizontal or vertical rotation, sensor levelling with an out-of-level alarm, directional scanning and a 600 rpm rotation speed for receiver-assisted work.","image":"/assets/agrotech-fukuda-fre-102b-1.png","images":[["/assets/agrotech-fukuda-fre-102b-1.png","Fukuda FRE-102B agricultural rotary laser transmitter"],["/assets/agrotech-fukuda-fre-102b-2.png","Front control-panel view of the Fukuda FRE-102B"],["/assets/agrotech-fukuda-fre-102b-3.png","Fukuda FRE-102B heavy-duty field transmitter"]],"features":["360-degree horizontal or vertical rotation","Sensor levelling with out-of-level alarm","Directional scanning with adjustable angle","600 rpm rotation speed","Waterproof and dust-resistant construction","Automatic shut-off after prolonged out-of-level status"],"applications":["Agricultural land levelling","Long-range field-grade reference","Receiver-assisted machine control","Horizontal and vertical alignment work"],"specs":[["Beam options","Red or green beam"],["Standard accuracy","+/-10 arc seconds (1.5 mm at 30 m)"],["Working range","900 m diameter with receiver"],["Rotation speed","600 rpm"],["Wavelength","635 nm"],["Power supply","4 x 4000 mAh Ni-MH rechargeable batteries"],["Working temperature","-20 C to +60 C"],["Protection","Waterproof and dust resistant"]]},
-{"slug":"apache-laser-transmitter","title":"Apache Laser Transmitter","category":"Agricultural rotary laser","tagline":"A compact rotating reference transmitter for precise agricultural land levelling.","cardDescription":"Establishes a consistent rotating laser plane for receiver-guided field levelling.","description":"The Apache Laser Transmitter provides the reference plane used by a laser land-levelling system. Its compact roll-cage design protects the rotary head and keeps the main controls easy to reach during field setup.","image":"/assets/agrotech-apache-laser-transmitter-1.png","images":[["/assets/agrotech-apache-laser-transmitter-1.png","Apache Laser Transmitter front view"],["/assets/agrotech-apache-laser-transmitter-2.png","Apache Laser Transmitter field-ready housing"],["/assets/agrotech-apache-laser-transmitter-3.png","Apache Laser Transmitter control-panel view"]],"features":["Rotating field-grade reference","Protected rotary head","Compact roll-cage housing","Simple front-mounted controls","Stable tripod-based positioning","Compatible receiver-guided workflow"],"applications":["Agricultural land levelling","Field elevation reference","Irrigation-grade preparation","Receiver-guided blade control"],"specs":[["Product type","Rotary laser transmitter"],["Reference output","360-degree rotating laser plane"],["Controls","Front-mounted operating panel"],["Housing","Protective field-ready frame"],["Field setup","Stable tripod mounting"],["System use","Transmitter, receiver and machine-control workflow"],["Range and accuracy","Confirmed for the supplied model before ordering"]]},
-{"slug":"deepal-laser-transmitter","title":"Deepal Laser Transmitter","category":"Field rotary laser","tagline":"A protected rotary laser reference unit for accurate outdoor levelling work.","cardDescription":"Provides a clear rotary reference for practical field grading and land-levelling operations.","description":"The Deepal Laser Transmitter establishes the consistent laser plane followed by the receiver during grading. The protected central rotary head, wide carrying frame and clearly grouped keypad support convenient field handling and setup.","image":"/assets/agrotech-deepal-laser-transmitter-1.png","images":[["/assets/agrotech-deepal-laser-transmitter-1.png","Deepal Laser Transmitter front view"],["/assets/agrotech-deepal-laser-transmitter-2.png","Deepal Laser Transmitter with protected rotary head"],["/assets/agrotech-deepal-laser-transmitter-3.png","Deepal Laser Transmitter field setup view"]],"features":["Rotating laser reference plane","Protected central rotary head","Integrated carrying frame","Clearly grouped control keypad","Tripod-ready field placement","Supports compatible receiver systems"],"applications":["Agricultural field levelling","Grade-reference establishment","Field preparation for irrigation","Receiver-assisted equipment control"],"specs":[["Product type","Agricultural rotary laser transmitter"],["Reference output","Rotating laser plane"],["Operator interface","Front keypad with status indicators"],["Housing","Protective integrated frame"],["Positioning","Tripod-based field setup"],["System pairing","Compatible laser receiver and controller"],["Range and accuracy","Confirmed for the supplied model before ordering"]]},
-{"slug":"fukuda-fre-203","title":"Fukuda FRE-203","category":"Dual-slope rotary laser","tagline":"An electronic self-levelling rotary laser with slope and scanning control.","cardDescription":"Combines electronic self-levelling, dual-axis slope control and long-range receiver operation.","description":"The Fukuda FRE-203 is an electronic self-levelling rotary laser for horizontal and vertical reference work. Its official specification includes dual-axis manual slope, selectable rotation speeds, directional scanning and receiver-assisted operation across large sites.","image":"/assets/agrotech-fukuda-fre-203-1.png","images":[["/assets/agrotech-fukuda-fre-203-1.png","Fukuda FRE-203 rotary laser transmitter"],["/assets/agrotech-fukuda-fre-203-2.png","Fukuda FRE-203 front control panel"],["/assets/agrotech-fukuda-fre-203-3.png","Fukuda FRE-203 protected rotary head"]],"features":["Electronic self-levelling","Horizontal and vertical operation","Dual-axis manual slope control","Selectable rotation speeds","Directional scanning modes","Shock-alert function"],"applications":["Agricultural land levelling","Horizontal grade reference","Vertical alignment work","Receiver-assisted outdoor levelling"],"specs":[["Accuracy","Horizontal +/-20 arc seconds; vertical +/-20 arc seconds"],["Self-levelling range","5 degrees"],["Manual slope","+/-10% in four directions"],["Measuring range","Minimum 400 m diameter with detector"],["Rotation speeds","60, 120, 300 and 600 rpm"],["Scanning angles","10, 45, 90 and 180 degrees"],["Operating temperature","-20 C to +50 C"],["Protection rating","IP55"],["Typical runtime","Up to 40 hours depending on conditions"]]},
-{"slug":"maas-ll710","title":"MAAS LL710","category":"Digital rotary laser","tagline":"A digital rotating laser transmitter for agricultural land-levelling reference work.","cardDescription":"Uses a digital control interface to establish the working laser plane across the field.","description":"The MAAS LL710 is a rotating laser transmitter intended for agricultural land levelling. Its digital display and direct-access keypad help the operator review settings while the protected rotary head produces the reference tracked by a compatible receiver.","image":"/assets/agrotech-maas-ll710-1.png","images":[["/assets/agrotech-maas-ll710-1.png","MAAS LL710 rotating laser transmitter"],["/assets/agrotech-maas-ll710-2.png","MAAS LL710 digital control display"],["/assets/agrotech-maas-ll710-3.png","MAAS LL710 agricultural land-levelling transmitter"]],"features":["Digital status display","Rotating laser reference","Protected rotary assembly","Direct-access control buttons","Compact field-ready body","Receiver-compatible operation"],"applications":["Agricultural land levelling","Digital field-grade reference","Irrigation-oriented preparation","Receiver-guided machine operation"],"specs":[["Model","MAAS LL710"],["Product type","Digital rotating laser transmitter"],["Display","Front digital status screen"],["Reference output","Rotating laser plane"],["Field setup","Tripod-mounted reference position"],["System pairing","Compatible laser receiver and control system"],["Range and accuracy","Confirmed for the supplied model before ordering"]]},
-{"slug":"digital-laser-transmitter","title":"Digital Laser Transmitter","category":"Digital field reference","tagline":"A clear-display rotary laser transmitter for precision field levelling.","cardDescription":"Pairs a readable digital interface with a rotating reference for accurate land levelling.","description":"The Digital Laser Transmitter establishes the reference plane required for receiver-guided field levelling. Its wide front display, dedicated keypad and protected rotary head are arranged for quick reading and straightforward setup outdoors.","image":"/assets/agrotech-digital-laser-transmitter-1.png","images":[["/assets/agrotech-digital-laser-transmitter-1.png","Digital Laser Transmitter front view"],["/assets/agrotech-digital-laser-transmitter-2.png","Digital Laser Transmitter control interface"],["/assets/agrotech-digital-laser-transmitter-3.png","Digital Laser Transmitter protected rotary head"]],"features":["Wide digital status display","Rotating field reference","Protected laser head","Dedicated operating keypad","Stable field-ready body","Compatible receiver workflow"],"applications":["Precision agricultural levelling","Field-grade reference","Uniform irrigation preparation","Receiver-assisted machine control"],"specs":[["Product type","Digital rotary laser transmitter"],["Operator interface","Front display and dedicated keypad"],["Reference output","Rotating laser plane"],["Housing","Protected field-ready construction"],["Positioning","Tripod-based setup"],["System pairing","Compatible receiver and control unit"],["Exact model data","Confirmed by the Agrotech team before ordering"]]}
+  {
+    "slug": "alpha-proshot-transmitter",
+    "title": "Alpha ProShot Transmitter",
+    "category": "Precision rotary laser",
+    "tagline": "A self-levelling rotary laser reference for precise agricultural grading.",
+    "cardDescription": "Creates a stable rotary laser reference for accurate field grading and land-levelling work.",
+    "description": "The Alpha ProShot Transmitter establishes the working reference plane for a laser land-levelling system. Its accessible front controls support practical field setup, slope adjustment and rotation selection.",
+    "image": "/assets/agrotech-alpha-proshot-transmitter-1.png",
+    "images": [
+      [
+        "/assets/agrotech-alpha-proshot-transmitter-1.png",
+        "Front view of the Alpha ProShot Transmitter"
+      ],
+      [
+        "/assets/agrotech-alpha-proshot-transmitter-2.png",
+        "Alpha ProShot Transmitter on its field-ready base"
+      ],
+      [
+        "/assets/agrotech-alpha-proshot-transmitter-3.png",
+        "Angled view of the Alpha ProShot Transmitter"
+      ]
+    ],
+    "features": [
+      "Self-levelling rotary laser reference",
+      "X-axis and Y-axis slope controls",
+      "Selectable rotation settings",
+      "Clear front control panel",
+      "Protected field-ready housing",
+      "Works with compatible laser receivers"
+    ],
+    "applications": [
+      "Agricultural land levelling",
+      "Field-grade reference",
+      "Irrigation-oriented field preparation",
+      "Receiver-guided machine control"
+    ],
+    "specs": [
+      [
+        "Product type",
+        "Self-levelling rotary laser transmitter"
+      ],
+      [
+        "Reference output",
+        "Rotating laser plane"
+      ],
+      [
+        "Slope control",
+        "X-axis and Y-axis adjustment"
+      ],
+      [
+        "Controls",
+        "Front-mounted keypad"
+      ],
+      [
+        "Field setup",
+        "Tripod-mounted reference position"
+      ],
+      [
+        "System pairing",
+        "Compatible laser receiver and control system"
+      ],
+      [
+        "Exact model data",
+        "Confirmed by the Agrotech team before ordering"
+      ]
+    ]
+  },
+  {
+    "slug": "fukuda-fre-102b",
+    "title": "Fukuda FRE-102B",
+    "category": "Heavy-duty rotary laser",
+    "tagline": "A long-range rotary laser level transmitter designed for agricultural land levelling.",
+    "cardDescription": "A heavy-duty agricultural rotary laser reference for accurate long-range land-levelling work.",
+    "description": "The Fukuda FRE-102B creates a 360-degree reference for field grading. Fukuda specifies horizontal or vertical rotation, sensor levelling with an out-of-level alarm, directional scanning and a 600 rpm rotation speed for receiver-assisted work.",
+    "image": "/assets/agrotech-fukuda-fre-102b-1.png",
+    "images": [
+      [
+        "/assets/agrotech-fukuda-fre-102b-1.png",
+        "Fukuda FRE-102B agricultural rotary laser transmitter"
+      ],
+      [
+        "/assets/agrotech-fukuda-fre-102b-2.png",
+        "Front control-panel view of the Fukuda FRE-102B"
+      ],
+      [
+        "/assets/agrotech-fukuda-fre-102b-3.png",
+        "Fukuda FRE-102B heavy-duty field transmitter"
+      ]
+    ],
+    "features": [
+      "360-degree horizontal or vertical rotation",
+      "Sensor levelling with out-of-level alarm",
+      "Directional scanning with adjustable angle",
+      "600 rpm rotation speed",
+      "Waterproof and dust-resistant construction",
+      "Automatic shut-off after prolonged out-of-level status"
+    ],
+    "applications": [
+      "Agricultural land levelling",
+      "Long-range field-grade reference",
+      "Receiver-assisted machine control",
+      "Horizontal and vertical alignment work"
+    ],
+    "specs": [
+      [
+        "Beam options",
+        "Red or green beam"
+      ],
+      [
+        "Standard accuracy",
+        "+/-10 arc seconds (1.5 mm at 30 m)"
+      ],
+      [
+        "Working range",
+        "900 m diameter with receiver"
+      ],
+      [
+        "Rotation speed",
+        "600 rpm"
+      ],
+      [
+        "Wavelength",
+        "635 nm"
+      ],
+      [
+        "Power supply",
+        "4 x 4000 mAh Ni-MH rechargeable batteries"
+      ],
+      [
+        "Working temperature",
+        "-20 C to +60 C"
+      ],
+      [
+        "Protection",
+        "Waterproof and dust resistant"
+      ]
+    ]
+  },
+  {
+    "slug": "apache-laser-transmitter",
+    "title": "Apache Laser Transmitter",
+    "category": "Agricultural rotary laser",
+    "tagline": "A compact rotating reference transmitter for precise agricultural land levelling.",
+    "cardDescription": "Establishes a consistent rotating laser plane for receiver-guided field levelling.",
+    "description": "The Apache Laser Transmitter provides the reference plane used by a laser land-levelling system. Its compact roll-cage design protects the rotary head and keeps the main controls easy to reach during field setup.",
+    "image": "/assets/agrotech-apache-laser-transmitter-1.png",
+    "images": [
+      [
+        "/assets/agrotech-apache-laser-transmitter-1.png",
+        "Apache Laser Transmitter front view"
+      ],
+      [
+        "/assets/agrotech-apache-laser-transmitter-2.png",
+        "Apache Laser Transmitter field-ready housing"
+      ],
+      [
+        "/assets/agrotech-apache-laser-transmitter-3.png",
+        "Apache Laser Transmitter control-panel view"
+      ]
+    ],
+    "features": [
+      "Rotating field-grade reference",
+      "Protected rotary head",
+      "Compact roll-cage housing",
+      "Simple front-mounted controls",
+      "Stable tripod-based positioning",
+      "Compatible receiver-guided workflow"
+    ],
+    "applications": [
+      "Agricultural land levelling",
+      "Field elevation reference",
+      "Irrigation-grade preparation",
+      "Receiver-guided blade control"
+    ],
+    "specs": [
+      [
+        "Product type",
+        "Rotary laser transmitter"
+      ],
+      [
+        "Reference output",
+        "360-degree rotating laser plane"
+      ],
+      [
+        "Controls",
+        "Front-mounted operating panel"
+      ],
+      [
+        "Housing",
+        "Protective field-ready frame"
+      ],
+      [
+        "Field setup",
+        "Stable tripod mounting"
+      ],
+      [
+        "System use",
+        "Transmitter, receiver and machine-control workflow"
+      ],
+      [
+        "Range and accuracy",
+        "Confirmed for the supplied model before ordering"
+      ]
+    ]
+  },
+  {
+    "slug": "deepal-laser-transmitter",
+    "title": "Deepal Laser Transmitter",
+    "category": "Field rotary laser",
+    "tagline": "A protected rotary laser reference unit for accurate outdoor levelling work.",
+    "cardDescription": "Provides a clear rotary reference for practical field grading and land-levelling operations.",
+    "description": "The Deepal Laser Transmitter establishes the consistent laser plane followed by the receiver during grading. The protected central rotary head, wide carrying frame and clearly grouped keypad support convenient field handling and setup.",
+    "image": "/assets/agrotech-deepal-laser-transmitter-1.png",
+    "images": [
+      [
+        "/assets/agrotech-deepal-laser-transmitter-1.png",
+        "Deepal Laser Transmitter front view"
+      ],
+      [
+        "/assets/agrotech-deepal-laser-transmitter-2.png",
+        "Deepal Laser Transmitter with protected rotary head"
+      ],
+      [
+        "/assets/agrotech-deepal-laser-transmitter-3.png",
+        "Deepal Laser Transmitter field setup view"
+      ]
+    ],
+    "features": [
+      "Rotating laser reference plane",
+      "Protected central rotary head",
+      "Integrated carrying frame",
+      "Clearly grouped control keypad",
+      "Tripod-ready field placement",
+      "Supports compatible receiver systems"
+    ],
+    "applications": [
+      "Agricultural field levelling",
+      "Grade-reference establishment",
+      "Field preparation for irrigation",
+      "Receiver-assisted equipment control"
+    ],
+    "specs": [
+      [
+        "Product type",
+        "Agricultural rotary laser transmitter"
+      ],
+      [
+        "Reference output",
+        "Rotating laser plane"
+      ],
+      [
+        "Operator interface",
+        "Front keypad with status indicators"
+      ],
+      [
+        "Housing",
+        "Protective integrated frame"
+      ],
+      [
+        "Positioning",
+        "Tripod-based field setup"
+      ],
+      [
+        "System pairing",
+        "Compatible laser receiver and controller"
+      ],
+      [
+        "Range and accuracy",
+        "Confirmed for the supplied model before ordering"
+      ]
+    ]
+  },
+  {
+    "slug": "fukuda-fre-203",
+    "title": "Fukuda FRE-203",
+    "category": "Dual-slope rotary laser",
+    "tagline": "An electronic self-levelling rotary laser with slope and scanning control.",
+    "cardDescription": "Combines electronic self-levelling, dual-axis slope control and long-range receiver operation.",
+    "description": "The Fukuda FRE-203 is an electronic self-levelling rotary laser for horizontal and vertical reference work. Its official specification includes dual-axis manual slope, selectable rotation speeds, directional scanning and receiver-assisted operation across large sites.",
+    "image": "/assets/agrotech-fukuda-fre-203-1.png",
+    "images": [
+      [
+        "/assets/agrotech-fukuda-fre-203-1.png",
+        "Fukuda FRE-203 rotary laser transmitter"
+      ],
+      [
+        "/assets/agrotech-fukuda-fre-203-2.png",
+        "Fukuda FRE-203 front control panel"
+      ],
+      [
+        "/assets/agrotech-fukuda-fre-203-3.png",
+        "Fukuda FRE-203 protected rotary head"
+      ]
+    ],
+    "features": [
+      "Electronic self-levelling",
+      "Horizontal and vertical operation",
+      "Dual-axis manual slope control",
+      "Selectable rotation speeds",
+      "Directional scanning modes",
+      "Shock-alert function"
+    ],
+    "applications": [
+      "Agricultural land levelling",
+      "Horizontal grade reference",
+      "Vertical alignment work",
+      "Receiver-assisted outdoor levelling"
+    ],
+    "specs": [
+      [
+        "Accuracy",
+        "Horizontal +/-20 arc seconds; vertical +/-20 arc seconds"
+      ],
+      [
+        "Self-levelling range",
+        "5 degrees"
+      ],
+      [
+        "Manual slope",
+        "+/-10% in four directions"
+      ],
+      [
+        "Measuring range",
+        "Minimum 400 m diameter with detector"
+      ],
+      [
+        "Rotation speeds",
+        "60, 120, 300 and 600 rpm"
+      ],
+      [
+        "Scanning angles",
+        "10, 45, 90 and 180 degrees"
+      ],
+      [
+        "Operating temperature",
+        "-20 C to +50 C"
+      ],
+      [
+        "Protection rating",
+        "IP55"
+      ],
+      [
+        "Typical runtime",
+        "Up to 40 hours depending on conditions"
+      ]
+    ]
+  },
+  {
+    "slug": "maas-ll710",
+    "title": "MAAS LL710",
+    "category": "Digital rotary laser",
+    "tagline": "A digital rotating laser transmitter for agricultural land-levelling reference work.",
+    "cardDescription": "Uses a digital control interface to establish the working laser plane across the field.",
+    "description": "The MAAS LL710 is a rotating laser transmitter intended for agricultural land levelling. Its digital display and direct-access keypad help the operator review settings while the protected rotary head produces the reference tracked by a compatible receiver.",
+    "image": "/assets/agrotech-maas-ll710-1.png",
+    "images": [
+      [
+        "/assets/agrotech-maas-ll710-1.png",
+        "MAAS LL710 rotating laser transmitter"
+      ],
+      [
+        "/assets/agrotech-maas-ll710-2.png",
+        "MAAS LL710 digital control display"
+      ],
+      [
+        "/assets/agrotech-maas-ll710-3.png",
+        "MAAS LL710 agricultural land-levelling transmitter"
+      ]
+    ],
+    "features": [
+      "Digital status display",
+      "Rotating laser reference",
+      "Protected rotary assembly",
+      "Direct-access control buttons",
+      "Compact field-ready body",
+      "Receiver-compatible operation"
+    ],
+    "applications": [
+      "Agricultural land levelling",
+      "Digital field-grade reference",
+      "Irrigation-oriented preparation",
+      "Receiver-guided machine operation"
+    ],
+    "specs": [
+      [
+        "Model",
+        "MAAS LL710"
+      ],
+      [
+        "Product type",
+        "Digital rotating laser transmitter"
+      ],
+      [
+        "Display",
+        "Front digital status screen"
+      ],
+      [
+        "Reference output",
+        "Rotating laser plane"
+      ],
+      [
+        "Field setup",
+        "Tripod-mounted reference position"
+      ],
+      [
+        "System pairing",
+        "Compatible laser receiver and control system"
+      ],
+      [
+        "Range and accuracy",
+        "Confirmed for the supplied model before ordering"
+      ]
+    ]
+  }
 ]
