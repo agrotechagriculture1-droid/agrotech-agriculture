@@ -1,78 +1,99 @@
-import { readFile, writeFile, mkdir } from "node:fs/promises";
+import { readFile, writeFile, mkdir, rm } from "node:fs/promises";
 import { join } from "node:path";
 
 const root = process.cwd();
 const cataloguePath = join(root, "dist", "transmitters", "index.html");
+const dataPath = join(root, "scripts", "transmitters-data.json");
+const products = JSON.parse(await readFile(dataPath, "utf8"));
 let catalogue = await readFile(cataloguePath, "utf8");
-const replacements = [
-  [/<article class="product-card" id="digital-laser-transmitter">[\s\S]*?<\/article>/, `<article class="product-card" id="alpha-proshot-transmitter">
-            <img class="product-card-image" src="/assets/agrotech-alpha-proshot-transmitter-1.png" alt="Agrotech Alpha ProShot self-levelling rotary laser transmitter">
-            <div class="product-card-body"><span class="product-category">Laser reference</span><h2 class="product-title">Alpha ProShot Transmitter</h2><p class="product-description">Creates a stable rotary laser reference for accurate field grading and land-levelling work.</p><a class="text-link" href="/transmitters/alpha-proshot-transmitter/">View details <span aria-hidden="true">→</span></a></div>
-          </article>`],
-  [/<article class="product-card" id="laser-receiver">[\s\S]*?<\/article>/, `<article class="product-card" id="fukuda-fre-102b">
-            <img class="product-card-image" src="/assets/agrotech-fukuda-fre-102b-1.png" alt="Fukuda FRE-102B heavy-duty rotary laser level transmitter">
-            <div class="product-card-body"><span class="product-category">Heavy-duty rotary laser</span><h2 class="product-title">Fukuda FRE-102B</h2><p class="product-description">A long-range agricultural rotary laser reference designed for accurate land-levelling work.</p><a class="text-link" href="/transmitters/fukuda-fre-102b/">View details <span aria-hidden="true">→</span></a></div>
-          </article>`],
-  [`href="/contact/?product=control-system">Request details`, `href="/transmitters/automatic-control-unit/">View details`],
-  [`href="/contact/?product=laser-transmitter">Request details`, `href="/transmitters/transmitter-tripod-setup/">View details`],
-  [`href="/contact/?product=control-system">Request details`, `href="/transmitters/receiver-mounting-system/">View details`],
-  [`href="/products/laser-land-leveler/">View system`, `href="/transmitters/complete-levelling-system/">View details`]
-];
-for (const [from, to] of replacements) catalogue = catalogue.replace(from, to);
+
+const esc = (value) => String(value)
+  .replaceAll("&", "&amp;")
+  .replaceAll("<", "&lt;")
+  .replaceAll(">", "&gt;")
+  .replaceAll('"', "&quot;")
+  .replaceAll("'", "&#39;");
+
+function catalogueCard(product) {
+  return [
+    '          <article class="product-card" id="' + product.slug + '">',
+    '            <img class="product-card-image" src="' + product.image + '" alt="' + esc(product.title) + '" loading="lazy">',
+    '            <div class="product-card-body"><span class="product-category">' + esc(product.category) + '</span><h2 class="product-title">' + esc(product.title) + '</h2><p class="product-description">' + esc(product.cardDescription) + '</p><a class="text-link" href="/transmitters/' + product.slug + '/">View details <span aria-hidden="true">→</span></a></div>',
+    '          </article>'
+  ].join("\n");
+}
+
+const introPattern = /(<section class="product-intro transmitter-intro"[\s\S]*?<h1 id="transmitters-page-heading">)[\s\S]*?(<\/h1>\s*<p>)[\s\S]*?(<\/p>)/;
+catalogue = catalogue.replace(
+  introPattern,
+  '$1Laser Transmitters$2Explore Agrotech&#39;s rotary laser transmitter range for accurate agricultural land levelling and field-grade reference work.$3'
+);
+catalogue = catalogue.replace(
+  'aria-label="Agrotech transmitter and control-system range"',
+  'aria-label="Agrotech laser transmitter range"'
+);
+catalogue = catalogue.replace(
+  /<div class="product-grid transmitter-product-grid">[\s\S]*?<\/div>\s*<\/div>\s*<\/section>/,
+  '<div class="product-grid transmitter-product-grid">\n' + products.map(catalogueCard).join("\n") + '\n        </div>\n      </div>\n    </section>'
+);
 await writeFile(cataloguePath, catalogue, "utf8");
 
-const cssPath = join(root, "dist", "assets", "site.css");
-let css = await readFile(cssPath, "utf8");
-const styleMarker = "/* Transmitter detail pages */";
-if (!css.includes(styleMarker)) css += `
-
-${styleMarker}
-.transmitter-detail-gallery{margin-top:28px}.transmitter-detail-overview{align-items:start}.transmitter-feature-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:24px 0 0;padding:0;list-style:none}.transmitter-feature-list li{position:relative;padding:15px 16px 15px 44px;border:1px solid rgba(10,71,43,.14);border-radius:10px;background:#fff;color:var(--ink);font-weight:700}.transmitter-feature-list li::before{content:"✓";position:absolute;top:14px;left:16px;color:var(--green);font-weight:900}.transmitter-spec-panel{overflow:hidden;border:1px solid rgba(10,71,43,.16);border-radius:12px;background:#fff}.transmitter-spec-row{display:grid;grid-template-columns:minmax(120px,.72fr) minmax(0,1.28fr);gap:20px;padding:15px 18px;border-bottom:1px solid rgba(10,71,43,.1)}.transmitter-spec-row:last-child{border-bottom:0}.transmitter-spec-row dt{color:var(--green);font-weight:800}.transmitter-spec-row dd{margin:0;color:var(--muted)}.related-transmitter-section{padding:66px 0 76px}.related-transmitter-heading{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:28px}.related-transmitter-heading h2{margin:8px 0 0;font-size:clamp(1.9rem,4vw,3rem)}.related-transmitter-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}.related-transmitter-card{overflow:hidden;border:1px solid rgba(10,71,43,.14);border-radius:12px;background:#fff;box-shadow:0 14px 34px rgba(4,47,28,.07);transition:transform 180ms ease,box-shadow 180ms ease}.related-transmitter-card:hover{transform:translateY(-4px);box-shadow:0 18px 42px rgba(4,47,28,.13)}.related-transmitter-card img{display:block;width:100%;aspect-ratio:1.5;object-fit:cover}.related-transmitter-card div{padding:20px}.related-transmitter-card h3{margin:7px 0 15px;font-size:1.18rem}@media(max-width:900px){.related-transmitter-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:640px){.transmitter-feature-list,.related-transmitter-grid{grid-template-columns:1fr}.transmitter-spec-row{grid-template-columns:1fr;gap:5px}.related-transmitter-heading{align-items:start;flex-direction:column}}
-`;
-await writeFile(cssPath, css, "utf8");
-
-const products = [
-  {isTransmitter:true,slug:"alpha-proshot-transmitter",title:"Alpha ProShot Transmitter",category:"Laser reference",tagline:"Self-levelling rotary laser reference for precise agricultural grading.",description:"The Alpha ProShot Transmitter establishes the reference plane used by a laser land-levelling system. Its straightforward control panel supports slope adjustment and rotation-speed selection for practical field setup.",image:"/assets/agrotech-alpha-proshot-transmitter-1.png",images:[["/assets/agrotech-alpha-proshot-transmitter-1.png","Front view of the Alpha ProShot Transmitter"],["/assets/agrotech-alpha-proshot-transmitter-2.png","Angled view of the Alpha ProShot Transmitter"],["/assets/agrotech-alpha-proshot-transmitter-3.png","Alpha ProShot Transmitter control-panel view"]],features:["Self-levelling rotary laser reference","Dual-axis slope controls","Selectable rotation speed","Clear field-ready control panel","Tripod-compatible positioning","Works with receiver and control systems"],applications:["Laser land levelling","Agricultural grade reference","Field preparation and irrigation planning","Coordinated receiver-based machine control"],specs:[["Product type","Self-levelling rotary laser transmitter"],["Reference","Rotating laser plane"],["Slope control","X-axis and Y-axis adjustment"],["Rotation","Selectable RPM control"],["Mounting","Tripod-based field setup"],["System pairing","Laser receiver and automatic control unit"],["Exact model data","Available from the Agrotech team on request"]],steps:["Position the transmitter on a stable tripod and establish the working reference.","Set the required level or slope from the transmitter control panel.","Pair the reference with the receiver and control system on the levelling machine."]},
-  {isTransmitter:true,slug:"fukuda-fre-102b",title:"Fukuda FRE-102B",category:"Heavy-duty rotary laser",tagline:"Heavy-duty rotary laser level transmitter designed for agricultural land levelling.",description:"The Fukuda FRE-102B is an agricultural rotary laser level that creates a 360-degree reference for field grading. Fukuda specifies horizontal or vertical rotation, sensor levelling with an out-of-level alarm, directional scanning and a 600 rpm rotation speed for long-range receiver-assisted work.",image:"/assets/agrotech-fukuda-fre-102b-1.png",images:[["/assets/agrotech-fukuda-fre-102b-1.png","Fukuda FRE-102B agricultural rotary laser transmitter"],["/assets/agrotech-fukuda-fre-102b-2.png","Front control-panel view of the Fukuda FRE-102B"],["/assets/agrotech-fukuda-fre-102b-3.png","Fukuda FRE-102B heavy-duty field transmitter"]],features:["360° horizontal or vertical rotation","Sensor levelling with out-of-level alarm","Directional scanning with adjustable angle","600 rpm rotation speed","Waterproof and dust-resistant construction","Automatic shut-off after 12 minutes out of level"],applications:["Agricultural land levelling","Long-range field grade reference","Receiver-assisted machine control","Horizontal and vertical alignment work"],specs:[["Beam options","Red or green beam"],["Standard accuracy","±10 arc seconds (1.5 mm at 30 m)"],["Working range","900 m diameter with receiver"],["Rotation speed","600 rpm"],["Wavelength","635 nm"],["Power supply","4 × 4000 mAh Ni-MH rechargeable batteries"],["Working temperature","−20°C to +60°C"],["Laser class","Class III"],["Protection","Waterproof and dust resistant"],["Included accessories","Battery, electric charger, laser eye and tractor charger"]],steps:["Place the FRE-102B on a stable tripod and establish the field reference.","Allow the sensor-levelling system to settle and confirm the transmitter is within range.","Use a compatible receiver to follow the reference during land-levelling work."]},
-  {slug:"automatic-control-unit",title:"Automatic Control Unit",category:"Hydraulic control",tagline:"Coordinates receiver feedback with the land leveler’s hydraulic response.",description:"The Automatic Control Unit receives grade information from the laser receiver and coordinates the hydraulic response of the levelling implement. It brings reference detection and machine movement into one controlled workflow.",image:"/assets/agrotech-receiver-control-system.png",images:[["/assets/agrotech-receiver-control-system.png","Agrotech automatic control unit with laser receiver"],["/assets/agrotech-laser-land-leveler.png","Land leveler used with automatic control"],["/assets/agrotech-alpha-proshot-transmitter-2.png","Rotary laser reference for the control system"]],features:["Receiver-signal processing","Coordinated hydraulic response","Operator-accessible controls","System status display","Machine-control integration","Designed for complete levelling setups"],applications:["Automatic blade-height control","Precision land levelling","Receiver-based grade correction","Hydraulic system coordination"],specs:[["Product role","Automatic grade-control coordination"],["Primary input","Laser receiver signal"],["Controlled system","Land-leveler hydraulic response"],["Operator interface","Mounted control panel"],["System pairing","Transmitter, receiver and hydraulic components"],["Exact model data","Available from the Agrotech team on request"]],steps:["Connect the control unit to the receiver and compatible hydraulic components.","Confirm the target reference and machine setup before operation.","The controller then coordinates height corrections as field conditions change."]},
-  {isTransmitter:true,slug:"transmitter-tripod-setup",title:"Transmitter & Tripod Setup",category:"Stable positioning",tagline:"A stable elevated base for establishing the working laser plane.",description:"The Transmitter and Tripod Setup positions the rotary laser at a stable working height across the field. Correct placement helps the receiver maintain a clear, consistent reference throughout the levelling area.",image:"/assets/agrotech-digital-laser-transmitter.png",images:[["/assets/agrotech-digital-laser-transmitter.png","Agrotech transmitter field setup"],["/assets/agrotech-alpha-proshot-transmitter-3.png","Alpha ProShot transmitter angled view"],["/assets/agrotech-laser-land-leveler.png","Field equipment working from the transmitter reference"]],features:["Stable elevated transmitter position","Portable field setup","Clear reference-plane placement","Tripod-based adjustment","Supports wide field visibility","Pairs with Agrotech receiver systems"],applications:["Establishing a laser reference plane","Field grade preparation","Land-leveler setup","Receiver alignment and calibration"],specs:[["Setup type","Transmitter with field tripod"],["Product role","Stable laser-reference positioning"],["Working position","Elevated and clear of obstructions"],["Adjustment","Field-position and height setup"],["System pairing","Laser receiver and control unit"],["Exact model data","Available from the Agrotech team on request"]],steps:["Choose a firm position with a clear view across the working field.","Set and level the tripod before mounting the transmitter.","Establish the reference and confirm receiver detection before grading begins."]},
-  {slug:"receiver-mounting-system",title:"Receiver Mounting System",category:"Machine integration",tagline:"Positions the receiver where it can continuously follow the laser reference.",description:"The Receiver Mounting System supports the detector on the levelling equipment at the required working height. A secure, correctly aligned mount helps maintain reliable reference tracking while the tractor moves.",image:"/assets/agrotech-laser-land-leveler.png",images:[["/assets/agrotech-laser-land-leveler.png","Receiver mounting position on an Agrotech land leveler"],["/assets/agrotech-receiver-control-system.png","Receiver and automatic control components"],["/assets/agrotech-alpha-proshot-transmitter-1.png","Transmitter providing the working reference"]],features:["Secure receiver positioning","Vertical working-height adjustment","Machine-mounted integration","Maintains line to the laser reference","Supports field calibration","Works with manual or automatic control"],applications:["Land-leveler receiver installation","Working-height adjustment","Laser-reference tracking","Complete grade-control integration"],specs:[["Product role","Receiver support and positioning"],["Mounting point","Levelling equipment"],["Adjustment","Working height and alignment"],["Paired component","Laser receiver"],["System integration","Transmitter and automatic control unit"],["Exact configuration","Confirmed for the selected machine and receiver"]],steps:["Install the mounting system securely on the levelling equipment.","Set the receiver height to match the working laser plane.","Confirm alignment and uninterrupted detection across the field."]},
-  {slug:"complete-levelling-system",title:"Complete Levelling System",category:"Complete solution",tagline:"A coordinated transmitter, receiver, controller and land-leveler setup.",description:"The Complete Levelling System brings together the reference transmitter, machine-mounted receiver, automatic control unit and Agrotech land leveler. Each component supports the same goal: accurate grade control during field preparation.",image:"/assets/agrotech-laser-land-leveler.png",images:[["/assets/agrotech-laser-land-leveler.png","Complete Agrotech laser land-levelling system"],["/assets/agrotech-alpha-proshot-transmitter-1.png","Alpha ProShot rotary laser transmitter"],["/assets/agrotech-receiver-control-system.png","Receiver and automatic control components"]],features:["Coordinated four-part system","Rotary laser grade reference","Continuous machine-position detection","Automatic hydraulic coordination","Practical field setup","Agrotech product guidance and support"],applications:["Precision land levelling","Field surface preparation","Irrigation-layout improvement","Correction of high and low field areas"],specs:[["Core components","Transmitter, receiver, control unit and land leveler"],["Primary application","Precision field levelling"],["Grade reference","Rotary laser plane"],["Machine response","Receiver-guided hydraulic adjustment"],["Tractor compatibility","Confirmed before selection"],["Exact configuration","Matched to field, tractor and intended use"]],steps:["Establish the field reference with the transmitter and tripod.","The receiver tracks machine position against that reference.","The control unit coordinates the leveler’s hydraulic correction while the tractor moves."]}
-];
-
-const escapeHtml = (value) => value.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
 const headerMatch = catalogue.match(/<header class="site-header">[\s\S]*?<\/header>/);
 const footerMatch = catalogue.match(/<footer class="site-footer">[\s\S]*?<\/footer>/);
-if (!headerMatch || !footerMatch) throw new Error("Could not read shared header or footer from transmitter catalogue.");
-const header = headerMatch[0].replace('<a class="nav-link" href="/transmitters/" aria-current="page">', '<a class="nav-link" href="/transmitters/" aria-current="page">');
+if (!headerMatch || !footerMatch) throw new Error("Could not read the shared header or footer.");
+const header = headerMatch[0];
 const footer = footerMatch[0];
 
 function relatedCards(current) {
-  return products.filter((product) => product.isTransmitter && product.slug !== current.slug).map((product) => `<article class="related-transmitter-card"><img src="${product.image}" alt="${escapeHtml(product.title)}" loading="lazy"><div><span class="product-category">${escapeHtml(product.category)}</span><h3>${escapeHtml(product.title)}</h3><a class="text-link" href="/transmitters/${product.slug}/">View details <span aria-hidden="true">→</span></a></div></article>`).join("");
+  return products
+    .filter((product) => product.slug !== current.slug)
+    .map((product) =>
+      '<article class="related-transmitter-card">' +
+      '<img src="' + product.image + '" alt="' + esc(product.title) + '" loading="lazy">' +
+      '<div><span class="product-category">' + esc(product.category) + '</span>' +
+      '<h3>' + esc(product.title) + '</h3>' +
+      '<a class="text-link" href="/transmitters/' + product.slug + '/">View details <span aria-hidden="true">→</span></a></div>' +
+      '</article>'
+    ).join("");
 }
 
-function page(product) {
-  const gallery = product.images.map(([src, caption], index) => `<figure class="product-detail-photo${index === 0 ? " is-main" : ""}"><img src="${src}" alt="${escapeHtml(caption)}" loading="${index === 0 ? "eager" : "lazy"}"><figcaption>${escapeHtml(caption)}</figcaption></figure>`).join("");
-  const featureList = product.features.map((feature) => `<li>${escapeHtml(feature)}</li>`).join("");
-  const applications = product.applications.map((application) => `<li>${escapeHtml(application)}</li>`).join("");
-  const specs = product.specs.map(([label, value]) => `<div class="transmitter-spec-row"><dt>${escapeHtml(label)}</dt><dd>${escapeHtml(value)}</dd></div>`).join("");
-  const steps = product.steps.map((step, index) => `<li><span>${String(index + 1).padStart(2, "0")}</span><p>${escapeHtml(step)}</p></li>`).join("");
-  return `<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${escapeHtml(product.title)} | Agrotech Agriculture</title><meta name="description" content="Explore ${escapeHtml(product.title)} features, applications, system details and product images from Agrotech Agriculture."><link rel="icon" href="/assets/agrotech-mark.png" type="image/png"><link rel="stylesheet" href="/assets/site.css"><script src="/assets/site.js" defer></script></head>
-<body><a class="skip-link" href="#main">Skip to content</a>${header}<main id="main">
-  <div class="container product-detail-breadcrumb"><a href="/transmitters/">Transmitters</a><span aria-hidden="true">/</span><span aria-current="page">${escapeHtml(product.title)}</span></div>
-  <section class="product-detail-top" aria-labelledby="product-heading"><div class="container product-detail-top-inner"><div class="product-detail-heading"><span class="product-category">${escapeHtml(product.category)}</span><h1 id="product-heading">${escapeHtml(product.title)}</h1><p>${escapeHtml(product.tagline)}</p><a class="button primary" href="/contact/?product=${product.slug}">Request product details <span aria-hidden="true">→</span></a></div><div class="product-detail-primary-media"><img src="${product.image}" alt="${escapeHtml(product.title)}"></div></div></section>
-  <section class="section product-detail-section transmitter-detail-gallery"><div class="container"><div class="product-detail-section-heading"><span class="eyebrow">PRODUCT IMAGES</span><h2>A closer look</h2></div><div class="product-detail-gallery" aria-label="${escapeHtml(product.title)} images">${gallery}</div></div></section>
-  <section class="section tint product-detail-content"><div class="container product-detail-content-grid transmitter-detail-overview"><div><span class="eyebrow">PRODUCT OVERVIEW</span><h2>About the ${escapeHtml(product.title)}</h2><p>${escapeHtml(product.description)}</p><h3>Key features</h3><ul class="transmitter-feature-list">${featureList}</ul></div><aside class="product-detail-use"><h2>Applications</h2><ul>${applications}</ul></aside></div></section>
-  <section class="section product-detail-section"><div class="container product-detail-content-grid"><div><span class="eyebrow">TECHNICAL DETAILS</span><h2>System specifications</h2><p>These details describe the product’s role in an Agrotech levelling setup. Final model specifications and compatibility are confirmed before ordering.</p></div><dl class="transmitter-spec-panel">${specs}</dl></div></section>
-  <section class="related-transmitter-section" aria-labelledby="related-heading"><div class="container"><div class="related-transmitter-heading"><div><span class="eyebrow">TRANSMITTER RANGE</span><h2 id="related-heading">Related Products</h2></div><a class="text-link" href="/transmitters/">View all transmitters <span aria-hidden="true">→</span></a></div><div class="related-transmitter-grid transmitter-only-grid">${relatedCards(product)}</div></div></section>
-</main>${footer}</body></html>`;
+function detailPage(product) {
+  const gallery = product.images.map((item, index) =>
+    '<figure class="product-detail-photo' + (index === 0 ? ' is-main' : '') + '">' +
+    '<img src="' + item[0] + '" alt="' + esc(item[1]) + '" loading="' + (index === 0 ? 'eager' : 'lazy') + '">' +
+    '<figcaption>' + esc(item[1]) + '</figcaption></figure>'
+  ).join("");
+  const features = product.features.map((item) => '<li>' + esc(item) + '</li>').join("");
+  const applications = product.applications.map((item) => '<li>' + esc(item) + '</li>').join("");
+  const specs = product.specs.map((item) =>
+    '<div class="transmitter-spec-row"><dt>' + esc(item[0]) + '</dt><dd>' + esc(item[1]) + '</dd></div>'
+  ).join("");
+
+  return [
+    '<!doctype html>',
+    '<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">',
+    '<title>' + esc(product.title) + ' | Agrotech Agriculture</title>',
+    '<meta name="description" content="Explore ' + esc(product.title) + ' images, applications and product details from Agrotech Agriculture.">',
+    '<link rel="icon" href="/assets/agrotech-mark.png" type="image/png"><link rel="stylesheet" href="/assets/site.css"><script src="/assets/site.js" defer></script></head>',
+    '<body><a class="skip-link" href="#main">Skip to content</a>' + header + '<main id="main">',
+    '<div class="container product-detail-breadcrumb"><a href="/transmitters/">Transmitters</a><span aria-hidden="true">/</span><span aria-current="page">' + esc(product.title) + '</span></div>',
+    '<section class="product-detail-top" aria-labelledby="product-heading"><div class="container product-detail-top-inner"><div class="product-detail-heading"><span class="product-category">' + esc(product.category) + '</span><h1 id="product-heading">' + esc(product.title) + '</h1><p>' + esc(product.tagline) + '</p><a class="button primary" href="/contact/?product=' + product.slug + '">Request product details <span aria-hidden="true">→</span></a></div><div class="product-detail-primary-media"><img src="' + product.image + '" alt="' + esc(product.title) + '"></div></div></section>',
+    '<section class="section product-detail-section transmitter-detail-gallery"><div class="container"><div class="product-detail-section-heading"><span class="eyebrow">PRODUCT IMAGES</span><h2>A closer look</h2></div><div class="product-detail-gallery" aria-label="' + esc(product.title) + ' images">' + gallery + '</div></div></section>',
+    '<section class="section tint product-detail-content"><div class="container product-detail-content-grid transmitter-detail-overview"><div><span class="eyebrow">PRODUCT OVERVIEW</span><h2>About the ' + esc(product.title) + '</h2><p>' + esc(product.description) + '</p><h3>Key features</h3><ul class="transmitter-feature-list">' + features + '</ul></div><aside class="product-detail-use"><h2>Applications</h2><ul>' + applications + '</ul></aside></div></section>',
+    '<section class="section product-detail-section"><div class="container product-detail-content-grid"><div><span class="eyebrow">TECHNICAL DETAILS</span><h2>Product specifications</h2><p>Published values are used where manufacturer data is available. Agrotech confirms the supplied model, compatibility and final specifications before ordering.</p></div><dl class="transmitter-spec-panel">' + specs + '</dl></div></section>',
+    '<section class="related-transmitter-section" aria-labelledby="related-heading"><div class="container"><div class="related-transmitter-heading"><div><span class="eyebrow">TRANSMITTER RANGE</span><h2 id="related-heading">Related Products</h2></div><a class="text-link" href="/transmitters/">View all transmitters <span aria-hidden="true">→</span></a></div><div class="related-transmitter-grid transmitter-only-grid">' + relatedCards(product) + '</div></div></section>',
+    '</main>' + footer + '</body></html>'
+  ].join("\n");
 }
 
 for (const product of products) {
   const directory = join(root, "dist", "transmitters", product.slug);
   await mkdir(directory, { recursive: true });
-  await writeFile(join(directory, "index.html"), page(product), "utf8");
+  await writeFile(join(directory, "index.html"), detailPage(product), "utf8");
 }
 
-console.log(`Updated the transmitter catalogue and generated ${products.length} detail pages.`);
+for (const obsolete of ["automatic-control-unit", "transmitter-tripod-setup", "receiver-mounting-system", "complete-levelling-system"]) {
+  await rm(join(root, "dist", "transmitters", obsolete), { recursive: true, force: true });
+}
+
+console.log("Updated the transmitter catalogue and generated " + products.length + " transmitter detail pages.");
